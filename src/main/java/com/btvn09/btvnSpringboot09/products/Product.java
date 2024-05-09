@@ -11,7 +11,7 @@ import lombok.experimental.FieldDefaults;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Product {
-     String id;
+     int id;
      String name;
      String description;
      int price;
