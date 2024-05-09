@@ -56,7 +56,7 @@ public class ProductController {
                     result.add(product);
             }
          }
-        return ResponseEntity.ok((Product) result);
+        return ResponseEntity.ok( result);
     }
     //3
     @GetMapping("/price/{min}/{max}")
@@ -67,7 +67,7 @@ public class ProductController {
                     result.add(product);
                 }
             }
-            return  ResponseEntity.ok((Product) result);
+            return  ResponseEntity.ok( result);
     }
     //4
     @GetMapping("/brand/{brand}")
@@ -78,7 +78,7 @@ public class ProductController {
                 result.add(product);
             }
         }
-        return  ResponseEntity.ok((Product) result);
+        return  ResponseEntity.ok( result);
     }
     //5
     @GetMapping("/brand/{brand}/max-price")
@@ -91,7 +91,7 @@ public class ProductController {
                 result.add(product);
             }
         }
-        return  ResponseEntity.ok((Product) result);
+        return  ResponseEntity.ok( result);
     }
 
 
