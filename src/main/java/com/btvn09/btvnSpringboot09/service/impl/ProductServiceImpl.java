@@ -24,12 +24,20 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getName(String name) {
-        return productDAO.findName(name);
+    public List<Product> getName(String prefix) {
+        return productDAO.findName(prefix);
     }
 
     @Override
     public List<Product> getPrice(int min,int max){
-        return (List<Product>) productDAO.findPrice(min, max);
+        return productDAO.findPrice(min, max);
+    }
+    @Override
+    public List<Product> getBrand(String brand){
+        return productDAO.findBrand(brand);
+    }
+    @Override
+    public Product getMaxPrice(String brand){
+        return productDAO.findMaxPrice(brand);
     }
 }

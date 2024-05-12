@@ -7,11 +7,15 @@ import java.util.List;
 
 public interface ProductDAO {
     List<Product> findAll();
+
     Product findById(int id);
 
     List<Product> findName(String name);
 
     List<Product> findPrice(int min,int max);
 
+    List<Product> findBrand(String brand);
+
+    Product findMaxPrice(String brand);
 
 }

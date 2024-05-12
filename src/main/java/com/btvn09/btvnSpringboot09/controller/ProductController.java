@@ -47,8 +47,22 @@ public class ProductController {
     //3
     @GetMapping("/price/{min}/{max}")
     public ResponseEntity<List<Product>> getPrice(@PathVariable int min,@PathVariable int max){
-        List<Product> products = productService.getPrice(min,max);
-        return ResponseEntity.ok(products);
+        List<Product> product1 = productService.getPrice(min,max);
+        return ResponseEntity.ok(product1);
+    }
+    //4
+    @GetMapping("/brand/{brand}")
+    public ResponseEntity<List<Product>> getBrand(@PathVariable String brand){
+        List<Product> product2=productService.getBrand(brand);
+        return  ResponseEntity.ok( product2);
+    }
+    //5
+    @GetMapping("/brand/{brand}/max-price")
+    public ResponseEntity<Product> getMaxPrice(@PathVariable String brand){
+        Product product3=productService.getMaxPrice(brand);
+        return ResponseEntity.ok(product3);
+
+
     }
 
 

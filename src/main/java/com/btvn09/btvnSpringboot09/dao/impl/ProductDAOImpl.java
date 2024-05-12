@@ -5,6 +5,9 @@ import com.btvn09.btvnSpringboot09.dao.ProductDAO;
 import com.btvn09.btvnSpringboot09.database.ProductDB;
 import com.btvn09.btvnSpringboot09.products.Product;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import static com.btvn09.btvnSpringboot09.database.ProductDB.products;
@@ -26,21 +29,52 @@ public class ProductDAOImpl implements ProductDAO {
         return null;
     }
     @Override
-    public List<Product> findName(String name){
-        for (Product product:products){
-            if (product.getName().toLowerCase()=="prefix"){
-                return ProductDB.products;
+    public List<Product> findName(String prefix){
+        List<Product>result=new ArrayList<>();
+        for (Product product : ProductDB.products) {
+            if(product.getName().toLowerCase().startsWith(prefix.toLowerCase())){
+                result.add(product);
             }
-         }
-        return null;
+        }
+        return result;
     }
     @Override
     public List<Product> findPrice( int min, int max){
-        for (Product product:products){
-            if (product.getPrice()>min&&product.getPrice()<max){
-                    return products;
-                }
+        List<Product>result=new ArrayList<>();
+        for (Product product : ProductDB.products) {
+            if(product.getPrice()<=max&&product.getPrice()>=min){
+                result.add(product);
             }
-            return  null;
+        }
+        return result;
     }
+
+    @Override
+    public List<Product> findBrand(String brand){
+        List<Product>result=new ArrayList<>();
+        for(Product product:ProductDB.products){
+            if(product.getBrand().toLowerCase().equals(brand.toLowerCase())){
+                result.add(product);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public Product findMaxPrice(String brand){
+        ProductDB.products.sort(new Comparator<Product>(){
+            @Override
+            public int compare(Product o1,Product o2){
+                return o2.getPrice()-o1.getPrice();
+            }
+        });
+        for(Product product:ProductDB.products){
+            if(product.getBrand().toLowerCase().equals(brand.toLowerCase())){
+                return product;
+            }
+        }
+        return null;
+}
+
+
 }
