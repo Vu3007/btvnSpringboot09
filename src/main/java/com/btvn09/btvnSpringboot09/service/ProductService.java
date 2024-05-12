@@ -8,7 +8,7 @@ import java.util.List;
 public interface ProductService {
     List<Product> getAllProduct();
     Product getProductById(int id);
-    List<Product> getName(String name);
+    List<Product> getName(String prefix);
     List<Product> getPrice(int min,int max);
     List<Product> getBrand(String brand);
     Product getMaxPrice(String brand);

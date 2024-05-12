@@ -36,13 +36,9 @@ public class ProductController {
    }
     //2
     @GetMapping("/name-starts/{prefix}")
-    public  ResponseEntity<List<Product>> getName(@PathVariable String name){
-        List<Product> products= productService.getName(name);
-        if(products != null) {
-            return ResponseEntity.ok(products); // 200
-        }
-
-        return ResponseEntity.ok( products);
+    public  ResponseEntity<List<Product>> getName(@PathVariable String prefix){
+        List<Product>searchByPrefix=productService.getName(prefix);
+        return ResponseEntity.ok(searchByPrefix);
     }
     //3
     @GetMapping("/price/{min}/{max}")

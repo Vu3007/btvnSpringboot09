@@ -10,7 +10,7 @@ public interface ProductDAO {
 
     Product findById(int id);
 
-    List<Product> findName(String name);
+    List<Product> findName(String prefix);
 
     List<Product> findPrice(int min,int max);
 
