@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.btvn09</groupId>
-	<artifactId>btvnSpringboot09</artifactId>
+	<artifactId>btvnSpringboot12</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>btvnSpringboot09</name>
 	<description>Demo project for Spring Boot</description>
@@ -17,6 +17,11 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
