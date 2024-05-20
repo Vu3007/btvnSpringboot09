@@ -21,39 +21,14 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public Product findById(int id) {
+    public Product findId(int id) {
         return findAll().stream()
                 .filter(product -> product.getId()==(id))
                 .findFirst()
                 .orElse(null);
     }
-    @Override
-    public List<Product> findName(String prefix){
-        return findAll().stream()
-                .filter(product -> product.getName().toLowerCase().startsWith(prefix.toLowerCase()))
-                .collect(Collectors.toList());
-    }
-    @Override
-    public List<Product> findPrice( int min, int max){
-        return findAll().stream()
-                .filter(product -> product.getPrice() >= min && product.getPrice() <= max)
-                .collect(Collectors.toList());
-    }
 
-    @Override
-    public List<Product> findBrand(String brand){
-        return findAll().stream()
-                .filter(product -> product.getBrand().toLowerCase().equals(brand.toLowerCase()))
-                .collect(Collectors.toList());
-    }
 
-    @Override
-    public Product findMaxPrice(String brand){
-      return findBrand(brand)
-              .stream()
-              .max((p1,p2)->p1.getPrice()- p2.getPrice())
-              .orElse(null);
-        }
 }
 
 

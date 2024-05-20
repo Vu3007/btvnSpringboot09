@@ -17,27 +17,8 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllProduct() {
         return productDAO.findAll();
     }
-
-    @Override
-    public Product getProductById(int id) {
-        return productDAO.findById(id);
+    public Product getProductById(int id){
+        return productDAO.findId(id);
     }
 
-    @Override
-    public List<Product> getName(String prefix) {
-        return productDAO.findName(prefix);
-    }
-
-    @Override
-    public List<Product> getPrice(int min,int max){
-        return productDAO.findPrice(min, max);
-    }
-    @Override
-    public List<Product> getBrand(String brand){
-        return productDAO.findBrand(brand);
-    }
-    @Override
-    public Product getMaxPrice(String brand){
-        return productDAO.findMaxPrice(brand);
-    }
 }

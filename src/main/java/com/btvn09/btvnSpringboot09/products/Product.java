@@ -14,6 +14,8 @@ public class Product {
      int id;
      String name;
      String description;
+     String thumbnail;
      int price;
-     String brand;
+     Double rating;
+     int priceDiscount;
 }

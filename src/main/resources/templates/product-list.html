@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách product</title>
+
+    <style>
+        .disabled {
+            pointer-events: none;
+            cursor: not-allowed;
+            background-color: #ccc;
+        }
+
+        .active {
+            background-color: darkorange;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h2>Danh sách product</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Thumbnail</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>PriceDiscount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${pageData.getContent()}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.thumbnail}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.rating}"></td>
+        <td th:text="${product.priceDiscount}"></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+
+<button th:classappend="${pageData.getCurrentPage() == 1 ? 'disabled' : ''}">
+    <a th:href="@{/books?page={page} (page=${pageData.getCurrentPage - 1})}">Trang trước</a>
+</button>
+<button th:each="number : ${#numbers.sequence(1, pageData.getTotalPages())}"
+        th:classappend="${pageData.getCurrentPage() == number} ? 'active' : ''">
+    <a th:href="@{/books?page={page} (page=${number})}" th:text="${number}">1</a>
+</button>
+<button th:classappend="${pageData.getCurrentPage() == pageData.getTotalPages() ? 'disabled' : ''}">
+    <a th:href="@{/books?page={page} (page=${pageData.getCurrentPage + 1})}">Trang sau</a>
+</button>
+</body>
+</html>
